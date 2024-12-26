@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from models import db
 from controllers import setup_routes
+from waitress import serve
 
 
 class Config:
@@ -31,5 +32,5 @@ def create_app():
 
 
 if __name__ == "__main__":
-    app = create_app()  # Create the app instance
-    app.run(debug=True)
+    app = create_app()
+    serve(app, host="0.0.0.0", port=8000)
